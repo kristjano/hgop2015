@@ -11,13 +11,13 @@ stýrikerfi á.
 
 ## Grunt
 Grunt er forrit í skel sem keyrir sjálfvirk verkefni í hugbúnaðarferlinu. Þetta
-geta verið einingarprófanir og aðrar prófanir sem hægt er að gera sjálfvirk og
-önnur verkefni til að gefa út hugbúnaðinn.
+geta verið einingarprófanir og aðrar sjálfvirkar prófanir eða önnur verkefni
+til að gefa út hugbúnaðinn.
 
 ## NPM
 NPM sér um að sækja öll þau forritasöfn sem NodeJS verkefnið notar til að
 búa til forritið. Þetta geta bæði verið forritasöfn sem notuð eru í forritinu
-sjálfu eða library sem notuð eru í þróunarferlinu.
+sjálfu eða forritasöfn sem notuð eru í þróunarferlinu.
 
 ## Node.js
 Node.js er JavaScript túlkur sem gerir manni kleift að keyra JavaScript á
@@ -30,5 +30,5 @@ Bower sér um að sækja öll þau forritasöfn sem notuð eru í framenda veffo
 I've implemented a bash script `deploy.sh` and when run on the development
 machine it pushes the newest docker build to Docker Hub. Then it logs into
 a production-test environment that should be running parallel in another VM
-on the host machine. On the production-test machine it pulls from Docker Hub
-the latest build and runs it.
+on the host machine or on another machine. On the production-test machine it
+pulls from Docker Hub the latest build and runs it.
