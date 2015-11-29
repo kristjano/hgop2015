@@ -25,3 +25,10 @@ netþjóni.
 
 ## Bower
 Bower sér um að sækja öll þau forritasöfn sem notuð eru í framenda veffortsins.
+
+## Deployment path
+I've implemented a bash script `deploy.sh` and when run on the development
+machine it pushes the newest docker build to Docker Hub. Then it logs into
+a production-test environment that should be running parallel in another VM
+on the host machine. On the production-test machine it pulls from Docker Hub
+the latest build and runs it.
