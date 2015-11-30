@@ -15,5 +15,7 @@ npm install --production
 
 echo Building docker image
 docker build -t kristjano/tictactoe .
+# Abort the script if docker build fails
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "Done"
