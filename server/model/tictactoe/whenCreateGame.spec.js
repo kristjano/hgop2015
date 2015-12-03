@@ -1,9 +1,9 @@
 var tictactoeCommandHandler = require('./tictactoeCommandHandler');
 
-describe('create game command', function() {
+describe('create game command', function () {
   var given, when, then;
 
-  it('should create game', function() {
+  it('should create game', function () {
     given = [];
     when = {
       id: 1,
@@ -25,7 +25,7 @@ describe('create game command', function() {
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
 
-  it('should create game with another user another time', function() {
+  it('should create game with another user another time', function () {
     given = [];
     when = {
       id: 2,
@@ -47,3 +47,35 @@ describe('create game command', function() {
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
 });
+
+describe('join game command', function () {
+  var given, when, then;
+
+  it('should join game', function () {
+    given = [{
+      id: 2,
+      event: 'GameCreated',
+      gameID: 3,
+      userName: 'Doddi',
+      timeStamp: '2015.12.03T13:57:33'
+    }];
+    when = {
+      id: 5,
+      command: 'JoinGame',
+      gameID: 3,
+      userName: 'Kristjan',
+      timeStamp: '2015.12.03T14:00:01'
+    };
+    then = [{
+      id: 5,
+      event: 'GameJoined',
+      gameID: 3,
+      userName: 'Kristjan',
+      timeStamp: '2015.12.03T14:00:01'
+    }];
+
+    var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });
+})
