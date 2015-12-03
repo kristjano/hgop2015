@@ -28,14 +28,22 @@ module.exports = function tictactoeCommandHandler(events) {
       }]
     },
     'MakeMove': function (command) {
+      if (events[events.length-1].x === command.x && events[events.length-1].y === command.y) {
+        return [{
+          id: command.id,
+          event: 'IllegalMove',
+          userName: command.userName,
+          timeStamp: command.timeStamp
+        }]
+      }
       return [{
-        id: 30,
+        id: command.id,
         event: 'MoveMade',
-        userName: 'Finnur',
-        x: 2,
-        y: 0,
-        player: 'X',
-        timeStamp: '2015.12.03T15:28:04'
+        userName: command.userName,
+        x: command.x,
+        y: command.y,
+        player: command.player,
+        timeStamp: command.timeStamp
       }];
     }
   }

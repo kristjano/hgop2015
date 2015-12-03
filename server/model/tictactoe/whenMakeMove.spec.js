@@ -44,5 +44,72 @@ describe('when make move command', function () {
 
       JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
     });
+
+    it('should make a move as second user', function () {
+      given.push({
+        id: 30,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 2,
+        y: 0,
+        player: 'X',
+        timeStamp: '2015.12.03T15:28:04'
+      });
+      when = {
+        id: 59,
+        command: 'MakeMove',
+        userName: 'Dora',
+        x: 3,
+        y: 0,
+        player: 'O',
+        timeStamp: '2015.12.03T15:30:01'
+      };
+      then = [{
+        id: 59,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 3,
+        y: 0,
+        player: 'O',
+        timeStamp: '2015.12.03T15:30:01'
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
+  });
+
+  describe('one previous move', function () {
+    it('placing move in same place should be illegal', function () {
+      given.push({
+        id: 59,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 3,
+        y: 0,
+        player: 'O',
+        timeStamp: '2015.12.03T15:30:01'
+      });
+      when = {
+        id: 60,
+        command: 'MakeMove',
+        userName: 'Finnur',
+        x: 3,
+        y: 0,
+        player: 'X',
+        timeStamp: '2015.12.03T15:35:45'
+      };
+      then = [{
+        id: 60,
+        event: 'IllegalMove',
+        userName: 'Finnur',
+        timeStamp: '2015.12.03T15:35:45'
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
   });
 });
