@@ -18,7 +18,7 @@ module.exports = function tictactoeCommandHandler(events) {
           timeStamp: '2015.12.03T15:02:01'
         }];
       }
-      
+
       return [{
         id: command.id,
         event: 'GameJoined',
@@ -26,6 +26,17 @@ module.exports = function tictactoeCommandHandler(events) {
         userName: command.userName,
         timeStamp: command.timeStamp
       }]
+    },
+    'MakeMove': function (command) {
+      return [{
+        id: 30,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 2,
+        y: 0,
+        player: 'X',
+        timeStamp: '2015.12.03T15:28:04'
+      }];
     }
   }
 
