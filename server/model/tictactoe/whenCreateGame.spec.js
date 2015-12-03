@@ -78,4 +78,25 @@ describe('join game command', function () {
 
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
+
+  it('should reject joining of a non-existing game', function () {
+    given = [];
+    when = {
+      id: 9,
+      command: 'JoinGame',
+      gameID: 5,
+      userName: 'Gunni',
+      timeStamp: '2015.12.03T15:02:01'
+    };
+    then = [{
+      id: 9,
+      event: 'GameDoesNotExist',
+      userName: 'Gunni',
+      timeStamp: '2015.12.03T15:02:01'
+    }];
+
+    var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });
 })
