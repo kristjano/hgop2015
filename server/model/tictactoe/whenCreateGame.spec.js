@@ -3,7 +3,7 @@ var tictactoeCommandHandler = require('./tictactoeCommandHandler');
 describe('create game command', function () {
   var given, when, then;
 
-  it('should create game', function () {
+  it('should create new game', function () {
     given = [];
     when = {
       id: 1,
@@ -25,7 +25,7 @@ describe('create game command', function () {
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
 
-  it('should create game with another user another time', function () {
+  it('should create new game with another user and another time', function () {
     given = [];
     when = {
       id: 2,

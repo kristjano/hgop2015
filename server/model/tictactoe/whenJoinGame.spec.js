@@ -3,7 +3,7 @@ var tictactoeCommandHandler = require('./tictactoeCommandHandler');
 describe('join game command', function () {
   var given, when, then;
 
-  it('should join game', function () {
+  it('should allow user to join game that is available', function () {
     given = [{
       id: 2,
       event: 'GameCreated',
@@ -31,7 +31,7 @@ describe('join game command', function () {
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
 
-  it('should reject joining of a non-existing game', function () {
+  it('should not allow user to join a non-existing game', function () {
     given = [];
     when = {
       id: 9,

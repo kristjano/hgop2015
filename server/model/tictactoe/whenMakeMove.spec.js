@@ -1,6 +1,6 @@
 var tictactoeCommandHandler = require('./tictactoeCommandHandler');
 
-describe('when make move command', function () {
+describe('make move command', function () {
   var given, when, then;
 
   beforeEach(function () {
@@ -20,58 +20,24 @@ describe('when make move command', function () {
   });
 
   describe('on new game', function () {
-    it('should make a move', function () {
+    it('first user should make a move', function () {
       when = {
         id: 30,
         command: 'MakeMove',
         userName: 'Finnur',
-        x: 2,
+        x: 0,
         y: 0,
-        player: 'X',
+        player: 'O',
         timeStamp: '2015.12.03T15:28:04'
       };
       then = [{
         id: 30,
         event: 'MoveMade',
         userName: 'Finnur',
-        x: 2,
-        y: 0,
-        player: 'X',
-        timeStamp: '2015.12.03T15:28:04'
-      }];
-
-      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
-
-      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
-    });
-
-    it('should make a move as second user', function () {
-      given.push({
-        id: 30,
-        event: 'MoveMade',
-        userName: 'Finnur',
-        x: 2,
-        y: 0,
-        player: 'X',
-        timeStamp: '2015.12.03T15:28:04'
-      });
-      when = {
-        id: 59,
-        command: 'MakeMove',
-        userName: 'Dora',
-        x: 3,
+        x: 0,
         y: 0,
         player: 'O',
-        timeStamp: '2015.12.03T15:30:01'
-      };
-      then = [{
-        id: 59,
-        event: 'MoveMade',
-        userName: 'Dora',
-        x: 3,
-        y: 0,
-        player: 'O',
-        timeStamp: '2015.12.03T15:30:01'
+        timeStamp: '2015.12.03T15:28:04'
       }];
 
       var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
@@ -80,31 +46,65 @@ describe('when make move command', function () {
     });
   });
 
-  describe('one previous move', function () {
-    it('placing move in same place should be illegal', function () {
+  describe('second player turn', function () {
+    it('second user should make a move', function () {
       given.push({
+        id: 30,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 0,
+        y: 0,
+        player: 'O',
+        timeStamp: '2015.12.03T15:28:04'
+      });
+      when = {
+        id: 59,
+        command: 'MakeMove',
+        userName: 'Dora',
+        x: 3,
+        y: 0,
+        player: 'X',
+        timeStamp: '2015.12.03T15:30:01'
+      };
+      then = [{
         id: 59,
         event: 'MoveMade',
         userName: 'Dora',
         x: 3,
         y: 0,
-        player: 'O',
+        player: 'X',
         timeStamp: '2015.12.03T15:30:01'
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
+
+    it('should not be allowed to make same move as previous user', function () {
+      given.push({
+        id: 30,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 0,
+        y: 0,
+        player: 'O',
+        timeStamp: '2015.12.03T15:28:04'
       });
       when = {
-        id: 60,
+        id: 59,
         command: 'MakeMove',
-        userName: 'Finnur',
-        x: 3,
+        userName: 'Dora',
+        x: 0,
         y: 0,
         player: 'X',
-        timeStamp: '2015.12.03T15:35:45'
+        timeStamp: '2015.12.03T15:30:01'
       };
       then = [{
-        id: 60,
+        id: 59,
         event: 'IllegalMove',
-        userName: 'Finnur',
-        timeStamp: '2015.12.03T15:35:45'
+        userName: 'Dora',
+        timeStamp: '2015.12.03T15:30:01'
       }];
 
       var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
