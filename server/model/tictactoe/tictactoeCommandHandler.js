@@ -7,15 +7,15 @@ module.exports = function tictactoeCommandHandler(events) {
         gameID: command.gameID,
         userName: command.userName,
         timeStamp: command.timeStamp
-      }]
+      }];
     },
     'JoinGame': function (command) {
       if (events.length < 1) {
         return [{
-          id: 9,
+          id: command.id,
           event: 'GameDoesNotExist',
-          userName: 'Gunni',
-          timeStamp: '2015.12.03T15:02:01'
+          userName: command.userName,
+          timeStamp: command.timeStamp
         }];
       }
 
@@ -28,13 +28,15 @@ module.exports = function tictactoeCommandHandler(events) {
       }]
     },
     'MakeMove': function (command) {
-      if (events[events.length-1].x === command.x && events[events.length-1].y === command.y) {
-        return [{
-          id: command.id,
-          event: 'IllegalMove',
-          userName: command.userName,
-          timeStamp: command.timeStamp
-        }]
+      for (event of events) {
+        if (event.x === command.x && event.y === command.y) {
+          return [{
+            id: command.id,
+            event: 'IllegalMove',
+            userName: command.userName,
+            timeStamp: command.timeStamp
+          }];
+        }
       }
       return [{
         id: command.id,
