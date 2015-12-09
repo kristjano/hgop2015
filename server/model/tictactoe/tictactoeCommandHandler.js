@@ -11,30 +11,30 @@ module.exports = function tictactoeCommandHandler(events) {
 
   var checkWin = function (player) {
     for (var i = 0; i < 3; i++) {
-      if (gameState.board[i][0] === player
-          && gameState.board[i][1] === player
-          && gameState.board[i][2] === player) {
+      if (gameState.board[i][0] === player &&
+        gameState.board[i][1] === player &&
+        gameState.board[i][2] === player) {
         return true;
       }
     }
 
-    for (var i = 0; i < 3; i++) {
-      if (gameState.board[0][i] === player
-          && gameState.board[1][i] === player
-          && gameState.board[2][i] === player) {
+    for (var j = 0; i < 3; j++) {
+      if (gameState.board[0][j] === player &&
+        gameState.board[1][j] === player &&
+        gameState.board[2][j] === player) {
         return true;
       }
     }
 
-    if (gameState.board[0][0] === player
-        && gameState.board[1][1] === player
-        && gameState.board[2][2] === player) {
+    if (gameState.board[0][0] === player &&
+      gameState.board[1][1] === player &&
+      gameState.board[2][2] === player) {
       return true;
     }
 
-    if (gameState.board[0][2] === player
-        && gameState.board[1][1] === player
-        && gameState.board[2][0] === player) {
+    if (gameState.board[0][2] === player &&
+      gameState.board[1][1] === player &&
+      gameState.board[2][0] === player) {
       return true;
     }
 
@@ -117,7 +117,7 @@ module.exports = function tictactoeCommandHandler(events) {
           timeStamp: command.timeStamp
         });
       }
-      
+
       return move;
     }
   }
