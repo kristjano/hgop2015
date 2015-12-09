@@ -39,6 +39,17 @@ module.exports = function tictactoeCommandHandler(events) {
     }
 
     return false;
+  };
+
+  var checkDraw = function () {
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; i < 3; i++) {
+        if (gameState.board[i][j] === '') {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   var handlers = {
@@ -97,6 +108,16 @@ module.exports = function tictactoeCommandHandler(events) {
           timeStamp: command.timeStamp
         });
       }
+
+      if (checkDraw()) {
+        move.push({
+          id: command.id,
+          event: 'Draw',
+          userName: command.userName,
+          timeStamp: command.timeStamp
+        });
+      }
+      
       return move;
     }
   }

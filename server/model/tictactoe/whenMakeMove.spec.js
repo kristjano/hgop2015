@@ -302,4 +302,102 @@ describe('make move command', function () {
       JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
     });
   });
+
+  describe('game draw', function () {
+    it('should be a draw when board is full and no one has won', function () {
+      given.push({
+        id: 300,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 0,
+        y: 0,
+        player: 'O',
+        timeStamp: '2015.12.09T12:25:50'
+      }, {
+        id: 305,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 0,
+        y: 2,
+        player: 'X',
+        timeStamp: '2015.12.09T12:26:50'
+      }, {
+        id: 308,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 1,
+        y: 1,
+        player: 'O',
+        timeStamp: '2015.12.09T12:28:50'
+      }, {
+        id: 310,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 2,
+        y: 2,
+        player: 'X',
+        timeStamp: '2015.12.09T12:30:50'
+      }, {
+        id: 312,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 2,
+        y: 0,
+        player: 'O',
+        timeStamp: '2015.12.09T12:31:50'
+      }, {
+        id: 313,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 1,
+        y: 0,
+        player: 'X',
+        timeStamp: '2015.12.09T12:32:50'
+      }, {
+        id: 314,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 1,
+        y: 2,
+        player: 'O',
+        timeStamp: '2015.12.09T12:33:50'
+      }, {
+        id: 316,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 0,
+        y: 1,
+        player: 'X',
+        timeStamp: '2015.12.09T12:35:50'
+      });
+      when = {
+        id: 318,
+        command: 'MakeMove',
+        userName: 'Finnur',
+        x: 2,
+        y: 1,
+        player: 'O',
+        timeStamp: '2015.12.09T12:37:21'
+      };
+
+      then = [{
+        id: 318,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 2,
+        y: 1,
+        player: 'O',
+        timeStamp: '2015.12.09T12:37:21'
+      }, {
+        id: 318,
+        event: 'Draw',
+        userName: 'Finnur',
+        timeStamp: '2015.12.09T12:37:21'
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
+  });
 });
