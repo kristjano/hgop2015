@@ -160,9 +160,7 @@ describe('make move command', function () {
 
       JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
     });
-  });
 
-  describe('winning move', function () {
     it('should be three down', function () {
       given.push({
         id: 140,
@@ -203,6 +201,53 @@ describe('make move command', function () {
         event: 'PlayerWon',
         userName: 'Dora',
         timeStamp: '2015.12.08T15:52:04'
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
+
+    it('should be three diagonal to the right', function () {
+      given.push({
+        id: 201,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 0,
+        y: 0,
+        player: 'X',
+        timeStamp: '2015.12.09T11:37:01'
+      }, {
+        id: 205,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 2,
+        y: 2,
+        player: 'X',
+        timeStamp: '2015.12.09T11:38:21'
+      });
+      when = {
+        id: 208,
+        command: 'MakeMove',
+        userName: 'Dora',
+        x: 1,
+        y: 1,
+        player: 'X',
+        timeStamp: '2015.12.09T11:39:04'
+      };
+      then = [{
+        id: 208,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 1,
+        y: 1,
+        player: 'X',
+        timeStamp: '2015.12.09T11:39:04'
+      }, {
+        id: 208,
+        event: 'PlayerWon',
+        userName: 'Dora',
+        timeStamp: '2015.12.09T11:39:04'
       }];
 
       var actualEvents = tictactoeCommandHandler(given).executeCommand(when);

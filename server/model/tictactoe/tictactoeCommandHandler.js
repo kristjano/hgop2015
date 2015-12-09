@@ -25,6 +25,12 @@ module.exports = function tictactoeCommandHandler(events) {
         return true;
       }
     }
+
+    if (gameState.board[0][0] === player
+        && gameState.board[1][1] === player
+        && gameState.board[2][2] === player) {
+      return true;
+    }
     return false;
   }
 
