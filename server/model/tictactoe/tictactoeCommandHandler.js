@@ -9,6 +9,17 @@ module.exports = function tictactoeCommandHandler(events) {
     }
   };
 
+  var checkWin = function (player) {
+    for (var i = 0; i < 3; i++) {
+      if (gameState.board[i][0] === player
+          && gameState.board[i][1] === player
+          && gameState.board[i][2] === player) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   var handlers = {
     'CreateGame': function (command) {
       return [{
@@ -46,7 +57,8 @@ module.exports = function tictactoeCommandHandler(events) {
           timeStamp: command.timeStamp
         }];
       }
-      return [{
+      gameState.board[command.x][command.y] = command.player;
+      var move = [{
         id: command.id,
         event: 'MoveMade',
         userName: command.userName,
@@ -55,6 +67,16 @@ module.exports = function tictactoeCommandHandler(events) {
         player: command.player,
         timeStamp: command.timeStamp
       }];
+
+      if (checkWin(command.player)) {
+        move.push({
+          id: command.id,
+          event: 'PlayerWon',
+          userName: command.userName,
+          timeStamp: command.timeStamp
+        });
+      }
+      return move;
     }
   }
 
