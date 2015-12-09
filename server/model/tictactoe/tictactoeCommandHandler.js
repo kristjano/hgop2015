@@ -1,4 +1,14 @@
 module.exports = function tictactoeCommandHandler(events) {
+  var gameState = {
+    board: [['', '', ''], ['', '', ''], ['', '', '']]
+  };
+
+  var eventHandlers = {
+    'MoveMade': function (event) {
+      gameState.board[event.x][event.y] = event.player;
+    }
+  };
+
   var handlers = {
     'CreateGame': function (command) {
       return [{
@@ -28,15 +38,13 @@ module.exports = function tictactoeCommandHandler(events) {
       }]
     },
     'MakeMove': function (command) {
-      for (event of events) {
-        if (event.x === command.x && event.y === command.y) {
-          return [{
-            id: command.id,
-            event: 'IllegalMove',
-            userName: command.userName,
-            timeStamp: command.timeStamp
-          }];
-        }
+      if (gameState.board[command.x][command.y] !== '') {
+        return [{
+          id: command.id,
+          event: 'IllegalMove',
+          userName: command.userName,
+          timeStamp: command.timeStamp
+        }];
       }
       return [{
         id: command.id,
@@ -48,6 +56,13 @@ module.exports = function tictactoeCommandHandler(events) {
         timeStamp: command.timeStamp
       }];
     }
+  }
+
+  for (var event of events) {
+    var eventHandler = eventHandlers[event.event];
+    if (eventHandler) {
+      eventHandler(event);
+	  }
   }
 
   return {

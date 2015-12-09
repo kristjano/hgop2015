@@ -61,7 +61,7 @@ describe('make move command', function () {
         id: 59,
         command: 'MakeMove',
         userName: 'Dora',
-        x: 3,
+        x: 2,
         y: 0,
         player: 'X',
         timeStamp: '2015.12.03T15:30:01'
@@ -70,7 +70,7 @@ describe('make move command', function () {
         id: 59,
         event: 'MoveMade',
         userName: 'Dora',
-        x: 3,
+        x: 2,
         y: 0,
         player: 'X',
         timeStamp: '2015.12.03T15:30:01'
