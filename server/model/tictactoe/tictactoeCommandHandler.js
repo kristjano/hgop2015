@@ -123,10 +123,10 @@ module.exports = function tictactoeCommandHandler(events) {
     }
   }
 
-  for (var event of events) {
-    var eventHandler = eventHandlers[event.event];
+  for (var i = 0; i < events.length; i++) {
+    var eventHandler = eventHandlers[events[i].event];
     if (eventHandler) {
-      eventHandler(event);
+      eventHandler(events[i]);
 	  }
   }
 
