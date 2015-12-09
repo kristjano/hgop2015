@@ -254,5 +254,52 @@ describe('make move command', function () {
 
       JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
     });
+
+    it('should be three diagonal to the left', function () {
+      given.push({
+        id: 300,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 0,
+        y: 2,
+        player: 'O',
+        timeStamp: '2015.12.09T12:01:50'
+      }, {
+        id: 303,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 1,
+        y: 1,
+        player: 'O',
+        timeStamp: '2015.12.09T12:03:10'
+      });
+      when = {
+        id: 305,
+        command: 'MakeMove',
+        userName: 'Finnur',
+        x: 2,
+        y: 0,
+        player: 'O',
+        timeStamp: '2015.12.09T12:04:21'
+      };
+      then = [{
+        id: 305,
+        event: 'MoveMade',
+        userName: 'Finnur',
+        x: 2,
+        y: 0,
+        player: 'O',
+        timeStamp: '2015.12.09T12:04:21'
+      }, {
+        id: 305,
+        event: 'PlayerWon',
+        userName: 'Finnur',
+        timeStamp: '2015.12.09T12:04:21'
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
   });
 });
