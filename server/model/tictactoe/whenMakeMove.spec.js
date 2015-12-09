@@ -161,4 +161,53 @@ describe('make move command', function () {
       JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
     });
   });
+
+  describe('winning move', function () {
+    it('should be three down', function () {
+      given.push({
+        id: 140,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 2,
+        y: 0,
+        player: 'X',
+        timeStamp: '2015.12.08T10:50:01'
+      }, {
+        id: 145,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 2,
+        y: 2,
+        player: 'X',
+        timeStamp: '2015.12.08T10:51:21'
+      });
+      when = {
+        id: 147,
+        command: 'MakeMove',
+        userName: 'Dora',
+        x: 2,
+        y: 1,
+        player: 'X',
+        timeStamp: '2015.12.08T15:52:04'
+      };
+      then = [{
+        id: 147,
+        event: 'MoveMade',
+        userName: 'Dora',
+        x: 2,
+        y: 1,
+        player: 'X',
+        timeStamp: '2015.12.08T15:52:04'
+      }, {
+        id: 147,
+        event: 'PlayerWon',
+        userName: 'Dora',
+        timeStamp: '2015.12.08T15:52:04'
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
+  });
 });
