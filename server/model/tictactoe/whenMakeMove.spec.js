@@ -24,6 +24,7 @@ describe('make move command', function () {
       when = {
         id: 30,
         command: 'MakeMove',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 0,
@@ -33,6 +34,7 @@ describe('make move command', function () {
       then = [{
         id: 30,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 0,
@@ -51,6 +53,7 @@ describe('make move command', function () {
       given.push({
         id: 30,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 0,
@@ -60,6 +63,7 @@ describe('make move command', function () {
       when = {
         id: 59,
         command: 'MakeMove',
+        gameID: 15,
         userName: 'Dora',
         x: 2,
         y: 0,
@@ -69,6 +73,7 @@ describe('make move command', function () {
       then = [{
         id: 59,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 2,
         y: 0,
@@ -85,6 +90,7 @@ describe('make move command', function () {
       given.push({
         id: 30,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 0,
@@ -94,6 +100,7 @@ describe('make move command', function () {
       when = {
         id: 59,
         command: 'MakeMove',
+        gameID: 15,
         userName: 'Dora',
         x: 0,
         y: 0,
@@ -103,6 +110,7 @@ describe('make move command', function () {
       then = [{
         id: 59,
         event: 'IllegalMove',
+        gameID: 15,
         userName: 'Dora',
         timeStamp: '2015.12.03T15:30:01'
       }];
@@ -118,6 +126,7 @@ describe('make move command', function () {
       given.push({
         id: 90,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 0,
@@ -126,6 +135,7 @@ describe('make move command', function () {
       }, {
         id: 95,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 1,
@@ -135,6 +145,7 @@ describe('make move command', function () {
       when = {
         id: 101,
         command: 'MakeMove',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 2,
@@ -144,6 +155,7 @@ describe('make move command', function () {
       then = [{
         id: 101,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 2,
@@ -152,6 +164,7 @@ describe('make move command', function () {
       }, {
         id: 101,
         event: 'PlayerWon',
+        gameID: 15,
         userName: 'Finnur',
         timeStamp: '2015.12.04T15:32:04'
       }];
@@ -165,6 +178,7 @@ describe('make move command', function () {
       given.push({
         id: 140,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 2,
         y: 0,
@@ -173,6 +187,7 @@ describe('make move command', function () {
       }, {
         id: 145,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 2,
         y: 2,
@@ -182,6 +197,7 @@ describe('make move command', function () {
       when = {
         id: 147,
         command: 'MakeMove',
+        gameID: 15,
         userName: 'Dora',
         x: 2,
         y: 1,
@@ -191,6 +207,7 @@ describe('make move command', function () {
       then = [{
         id: 147,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 2,
         y: 1,
@@ -199,6 +216,7 @@ describe('make move command', function () {
       }, {
         id: 147,
         event: 'PlayerWon',
+        gameID: 15,
         userName: 'Dora',
         timeStamp: '2015.12.08T15:52:04'
       }];
@@ -212,6 +230,7 @@ describe('make move command', function () {
       given.push({
         id: 201,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 0,
         y: 0,
@@ -220,6 +239,7 @@ describe('make move command', function () {
       }, {
         id: 205,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 2,
         y: 2,
@@ -229,6 +249,7 @@ describe('make move command', function () {
       when = {
         id: 208,
         command: 'MakeMove',
+        gameID: 15,
         userName: 'Dora',
         x: 1,
         y: 1,
@@ -238,6 +259,7 @@ describe('make move command', function () {
       then = [{
         id: 208,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 1,
         y: 1,
@@ -246,6 +268,7 @@ describe('make move command', function () {
       }, {
         id: 208,
         event: 'PlayerWon',
+        gameID: 15,
         userName: 'Dora',
         timeStamp: '2015.12.09T11:39:04'
       }];
@@ -259,6 +282,7 @@ describe('make move command', function () {
       given.push({
         id: 300,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 2,
@@ -267,6 +291,7 @@ describe('make move command', function () {
       }, {
         id: 303,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 1,
         y: 1,
@@ -276,6 +301,7 @@ describe('make move command', function () {
       when = {
         id: 305,
         command: 'MakeMove',
+        gameID: 15,
         userName: 'Finnur',
         x: 2,
         y: 0,
@@ -285,6 +311,7 @@ describe('make move command', function () {
       then = [{
         id: 305,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 2,
         y: 0,
@@ -293,6 +320,7 @@ describe('make move command', function () {
       }, {
         id: 305,
         event: 'PlayerWon',
+        gameID: 15,
         userName: 'Finnur',
         timeStamp: '2015.12.09T12:04:21'
       }];
@@ -308,6 +336,7 @@ describe('make move command', function () {
       given.push({
         id: 300,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 0,
         y: 0,
@@ -316,6 +345,7 @@ describe('make move command', function () {
       }, {
         id: 305,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 0,
         y: 2,
@@ -324,6 +354,7 @@ describe('make move command', function () {
       }, {
         id: 308,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 1,
         y: 1,
@@ -332,6 +363,7 @@ describe('make move command', function () {
       }, {
         id: 310,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 2,
         y: 2,
@@ -340,6 +372,7 @@ describe('make move command', function () {
       }, {
         id: 312,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 2,
         y: 0,
@@ -348,6 +381,7 @@ describe('make move command', function () {
       }, {
         id: 313,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 1,
         y: 0,
@@ -356,6 +390,7 @@ describe('make move command', function () {
       }, {
         id: 314,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 1,
         y: 2,
@@ -364,6 +399,7 @@ describe('make move command', function () {
       }, {
         id: 316,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Dora',
         x: 0,
         y: 1,
@@ -373,6 +409,7 @@ describe('make move command', function () {
       when = {
         id: 318,
         command: 'MakeMove',
+        gameID: 15,
         userName: 'Finnur',
         x: 2,
         y: 1,
@@ -383,6 +420,7 @@ describe('make move command', function () {
       then = [{
         id: 318,
         event: 'MoveMade',
+        gameID: 15,
         userName: 'Finnur',
         x: 2,
         y: 1,
@@ -391,6 +429,7 @@ describe('make move command', function () {
       }, {
         id: 318,
         event: 'Draw',
+        gameID: 15,
         userName: 'Finnur',
         timeStamp: '2015.12.09T12:37:21'
       }];

@@ -68,6 +68,7 @@ module.exports = function tictactoeCommandHandler(events) {
         return [{
           id: command.id,
           event: 'GameDoesNotExist',
+          gameID: command.gameID,
           userName: command.userName,
           timeStamp: command.timeStamp
         }];
@@ -86,6 +87,7 @@ module.exports = function tictactoeCommandHandler(events) {
         return [{
           id: command.id,
           event: 'IllegalMove',
+          gameID: command.gameID,
           userName: command.userName,
           timeStamp: command.timeStamp
         }];
@@ -94,6 +96,7 @@ module.exports = function tictactoeCommandHandler(events) {
       var move = [{
         id: command.id,
         event: 'MoveMade',
+        gameID: command.gameID,
         userName: command.userName,
         x: command.x,
         y: command.y,
@@ -105,6 +108,7 @@ module.exports = function tictactoeCommandHandler(events) {
         move.push({
           id: command.id,
           event: 'PlayerWon',
+          gameID: command.gameID,
           userName: command.userName,
           timeStamp: command.timeStamp
         });
@@ -114,6 +118,7 @@ module.exports = function tictactoeCommandHandler(events) {
         move.push({
           id: command.id,
           event: 'Draw',
+          gameID: command.gameID,
           userName: command.userName,
           timeStamp: command.timeStamp
         });

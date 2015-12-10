@@ -43,6 +43,7 @@ describe('join game command', function () {
     then = [{
       id: 9,
       event: 'GameDoesNotExist',
+      gameID: 5,
       userName: 'Gunni',
       timeStamp: '2015.12.03T15:02:01'
     }];
