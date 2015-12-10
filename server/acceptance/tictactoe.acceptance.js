@@ -4,6 +4,9 @@ var should = require('should');
 var request = require('supertest');
 var acceptanceUrl = process.env.ACCEPTANCE_URL;
 
+var given = require('../fluid-api/tictactoeFluid').given;
+var user = require('../fluid-api/tictactoeFluid').user;
+
 
 describe('TEST ENV GET /api/gameHistory', function () {
 
