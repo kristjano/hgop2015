@@ -8,11 +8,6 @@ then
   exit 1
 fi
 
-echo " -- Pushing to docker hub"
-echo
-docker push kristjano/tictactoe
-echo
-
 echo " -- Accessing test machine"
 ssh vagrant@$TESTENV << EOF
   # ssh remote execution

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Add server-side testing to test reports
+export MOCHA_REPORTER=xunit
+export MOCHA_REPORT=server-tests.xml
+
 echo Cleaning...
 rm -rf ./dist
 
@@ -34,5 +38,10 @@ if [[ $rc != 0 ]] ; then
     echo "Docker build failed " $rc
     exit $rc
 fi
+
+echo " -- Pushing to docker hub"
+echo
+docker push kristjano/tictactoe
+echo
 
 echo "Done"
