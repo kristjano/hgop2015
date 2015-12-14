@@ -31,8 +31,6 @@ ssh vagrant@$TESTENV << EOF
 
   echo " -- You should now be able to access the project from"
   echo "    the production-test environment"
-  echo
 
-  echo "Running on http://$TESTENV:9090/"
   echo
 EOF
