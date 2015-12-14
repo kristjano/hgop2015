@@ -53,11 +53,24 @@ describe('TEST ENV GET /api/gameHistory', function () {
       });
   });
 
-
   it('Should execute fluid API test', function (done) {
     given(user("YourUser").createsGame("TheFirstGame"))
     .expect("GameCreated").withName("TheFirstGame").isOk(done);
-    done();
+  });
+
+  it('Should play game until a draw', function (done) {
+     given(user("YourUser").createsGame("GameIdOne").named("TheFirstGame"))
+     .and(user("OtherUser").joinsGame("GameIdOne"))
+     .and(user("YourUser").makesMove(0,0))
+     .and(user("OtherUser").makesMove(0,2))
+     .and(user("YourUser").makesMove(1,1))
+     .and(user("OtherUser").makesMove(2,2))
+     .and(user("YourUser").makesMove(2,0))
+     .and(user("OtherUser").makesMove(1,0))
+     .and(user("YourUser").makesMove(1,2))
+     .and(user("OtherUser").makesMove(0,1))
+     .and(user("YourUser").makesMove(2,1))
+     .expect("Draw").byUser("YourUser").isOk(done);
   });
 
 });
