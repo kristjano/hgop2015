@@ -9,3 +9,4 @@ dist
 reports/
 acceptance-tests
 server-tests
+load-tests.txt
