@@ -1,12 +1,15 @@
 #!/bin/bash
 
-TESTENV=$1
-
-if [ "$#" -ne 1 ]
+if [ "$#" -ne 3 ]
 then
-  echo "You must provide the ip address of the test server"
+  echo "You must provide the ip address and port number of the test server"
+  echo "Plus the previous successful git commit"
   exit 1
 fi
+TESTENV=$1
+PORTNR=$2
+COMMIT=$3
+
 
 echo " -- Accessing test machine"
 ssh vagrant@$TESTENV << EOF
@@ -24,7 +27,7 @@ ssh vagrant@$TESTENV << EOF
 
   echo " -- Start test environment"
   echo
-  docker run -p 8080:8080 -d --name=testenv -e "NODE_ENV=production" kristjano/tictactoe
+  docker run -p $PORTNR:8080 -d --name=testenv -e "NODE_ENV=production" kristjano/tictactoe:$COMMIT
 
   echo " -- You should now be able to access the project from"
   echo "    the production-test environment"
