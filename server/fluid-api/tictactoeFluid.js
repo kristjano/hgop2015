@@ -83,7 +83,7 @@ function given(userApi) {
       return expectApi;
     },
     expect: function (eventName) {
-      if (eventName === 'Draw') {
+      if (eventName === 'Draw' || eventName === 'PlayerWon') {
         _expectedEvents.push({
                   id: _expectedEvents[_currentEvent].id,
                   event: eventName,

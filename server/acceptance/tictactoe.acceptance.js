@@ -73,4 +73,14 @@ describe('TEST ENV GET /api/gameHistory', function () {
      .expect("Draw").byUser("YourUser").isOk(done);
   });
 
+  it('Should play game until a win', function (done) {
+     given(user("YourUser").createsGame("GameIdTwo").named("TheSecondGame"))
+     .and(user("OtherUser").joinsGame("GameIdTwo"))
+     .and(user("YourUser").makesMove(0,0))
+     .and(user("OtherUser").makesMove(0,2))
+     .and(user("YourUser").makesMove(1,1))
+     .and(user("OtherUser").makesMove(2,1))
+     .and(user("YourUser").makesMove(2,2))
+     .expect("PlayerWon").byUser("YourUser").isOk(done);
+  });
 });
