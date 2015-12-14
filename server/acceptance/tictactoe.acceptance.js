@@ -58,6 +58,13 @@ describe('TEST ENV GET /api/gameHistory', function () {
     .expect("GameCreated").withName("TheFirstGame").isOk(done);
   });
 
+  it('Should have made a move', function (done) {
+     given(user("YourUser").createsGame("GameIdZero").named("PreGame"))
+     .and(user("OtherUser").joinsGame("GameIdZero"))
+     .and(user("YourUser").makesMove(0,0))
+     .expect("MoveMade").byUser("YourUser").isOk(done);
+   });
+
   it('Should play game until a draw', function (done) {
      given(user("YourUser").createsGame("GameIdOne").named("TheFirstGame"))
      .and(user("OtherUser").joinsGame("GameIdOne"))
