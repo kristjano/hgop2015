@@ -43,7 +43,7 @@ module.exports = function tictactoeCommandHandler(events) {
 
   var checkDraw = function () {
     for (var i = 0; i < 3; i++) {
-      for (var j = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
         if (gameState.board[i][j] === '') {
           return false;
         }
