@@ -88,7 +88,7 @@ function given(userApi) {
                   id: _expectedEvents[_currentEvent].id,
                   event: eventName,
                   gameID: _gameId,
-                  userName: _expectedEvents[_currentEvent].user,
+                  userName: _expectedEvents[_currentEvent].userName,
                   timeStamp: _expectedEvents[_currentEvent].timeStamp
                 });
         _currentEvent += 1;
