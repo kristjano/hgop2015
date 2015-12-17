@@ -8,6 +8,6 @@ dist
 .DS_Store
 reports/
 acceptance-tests
-server-tests
+server-tests.txt
 load-tests.txt
 acceptance-tests.txt
