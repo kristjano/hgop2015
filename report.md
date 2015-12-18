@@ -34,7 +34,14 @@ on the host machine or on another machine. On the production-test machine it
 pulls from Docker Hub the latest build and runs it.
 
 ## Capacity tests
-The Capacity tests are run asynchronously, i.e. they run in parallel.  
+The Capacity tests are run asynchronously, i.e. they run in parallel.
+
+## Day 10
+Með því að commita kóða á git og fá þá hash fyrir öll commit gerir manni kleyft
+að sækja nákvæma útgáfu af kóðanum á þeim tímapunkti. Með deploy skritfunni sem
+við höfum nú gert er hægt að setja hash, fyrir hvaða commit sem er, í arguments
+og deployað þeirri útgáfu á það umhverfi sem þú kýst (með því að setja ip tölu
+og port í arguments).
 
 ## Scripts
 ### Commit stage
