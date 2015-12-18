@@ -42,6 +42,8 @@ að sækja nákvæma útgáfu af kóðanum á þeim tímapunkti. Með deploy skr
 við höfum nú gert er hægt að setja hash, fyrir hvaða commit sem er, í arguments
 og deployað þeirri útgáfu á það umhverfi sem þú kýst (með því að setja ip tölu
 og port í arguments).
+Þú vilt hafa docker push í dockerbuild scriptunni svo að sú útgáfa sem er verið
+að commita sé til á skrá ánþess að þurfa að deploya henni samtímis.
 
 ## Scripts
 ### Commit stage
